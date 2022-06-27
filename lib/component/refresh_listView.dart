@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/bloc/home_bloc.dart';
 import 'package:movies/model/popular_person_model.dart';
 import 'package:movies/repository/person_repository.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -10,8 +11,9 @@ class Refresh_ListView extends StatelessWidget{
 
   RefreshController _refreshController = RefreshController(initialRefresh: false);
   List<Results> persons;
+  HomeBloc bloc;
 
-  Refresh_ListView(this.persons);
+  Refresh_ListView(this.persons,this.bloc);
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +24,7 @@ class Refresh_ListView extends StatelessWidget{
         onRefresh: () async {
           _refreshController.refreshCompleted();
         },
-        // onLoading: (){
-        //   print('loading');
-        //   _refreshController.loadComplete();
-        //
-        // },
-        //enablePullUp: true,
+
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: ListView.builder(
             itemCount: persons.length,
