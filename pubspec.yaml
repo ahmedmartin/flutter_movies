@@ -37,6 +37,7 @@ dependencies:
   pull_to_refresh: ^2.0.0
   dio:
   flutter_bloc:
+  shared_preferences: 2.0.15
 
 dev_dependencies:
   flutter_test:

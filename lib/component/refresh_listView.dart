@@ -12,9 +12,7 @@ import '../bloc/person_info/person_info_bloc.dart';
 
 class Refresh_ListView extends StatefulWidget{
 
-  // List<Results> persons;
   HomeBloc bloc;
-   // int page_index ;
 
   Refresh_ListView(this.bloc);
 
@@ -28,12 +26,11 @@ class Refresh_ListView extends StatefulWidget{
 class _Refresh_ListView extends State<Refresh_ListView>{
 
   RefreshController _refreshController = RefreshController(initialRefresh: false);
-  // List<Results> persons;
   HomeBloc bloc;
   int page_index =1;
 
 
-  // _Refresh_ListView(this.persons,this.bloc,this.page_index);
+
   _Refresh_ListView(this.bloc);
 
 
@@ -44,16 +41,15 @@ class _Refresh_ListView extends State<Refresh_ListView>{
       child:SmartRefresher(
         controller: _refreshController,
         enablePullDown: false,
-        enablePullUp: true,
+        enablePullUp: page_index<=500,
         onLoading:() async {
           setState(()  {
             bloc.get_popular_persons(++page_index);
           });
-          print('loading');
           _refreshController.loadComplete();
         },
 
-        //physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+
         child: ListView.builder(
             itemCount: bloc.popular_persons_info.length,
             itemBuilder: (context,index){

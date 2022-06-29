@@ -26,6 +26,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       print(popular_persons_info.length);
       emit(FetchedPersonsState());
     } catch (e) {
+      print(e.toString());
       emit(FailedPersonsState(e.toString()));
     }
 
