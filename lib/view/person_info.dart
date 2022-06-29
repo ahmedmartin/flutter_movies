@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/bloc/person_info/person_info_bloc.dart';
 import 'package:movies/component/person_info/header_info.dart';
+import 'package:movies/component/person_info/image_gridview.dart';
 
 
 
@@ -24,22 +25,24 @@ class Person_info extends StatelessWidget{
     return Scaffold(
       body: BlocBuilder<PersonInfoBloc,PersonInfoState>(builder: (context, state){
         if(state is LoadingPersonState) {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }else if(state is FetchedPersonState){
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
-                  SizedBox(height: 30,),
+                  SizedBox(height: 20,),
                   Header_info(bloc.person_model),
-                  SizedBox(height: 10,),
+                  // SizedBox(height: 10,),
                   Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(bloc.person_model.biography!,style: TextStyle(
-                        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16
+                    padding: const EdgeInsets.all(15),
+                    child: Text(bloc.person_model.biography!, style: TextStyle(
+                        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14
                     ),),
                   ),
+                  //SizedBox(height: 20,),
+                  Images_grideview(bloc.person_model.images!.profiles!)
                 ],
               ),
             ),
