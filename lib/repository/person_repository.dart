@@ -17,9 +17,9 @@ class Person_repo {
 
     if(response.statusCode==200)
       return Popular_person_model.fromJson(response.data).results!;
-
-    else
+    else {
       return [];
+    }
 
   }
 

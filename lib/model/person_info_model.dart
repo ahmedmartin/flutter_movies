@@ -107,17 +107,17 @@ class Person_info_model {
   Person_info_model.fromJson(Map<String, dynamic> json) {
     _adult = json['adult'];
     _alsoKnownAs = json['also_known_as'].cast<String>();
-    _biography = json['biography'];
-    _birthday = json['birthday'];
+    _biography = json['biography'].toString();
+    _birthday = json['birthday'].toString();
     _deathday = json['deathday'];
     _gender = json['gender'];
     _id = json['id'];
     _imdbId = json['imdb_id'];
-    _knownForDepartment = json['known_for_department'];
-    _name = json['name'];
+    _knownForDepartment = json['known_for_department'].toString();
+    _name = json['name'].toString();
     _placeOfBirth = json['place_of_birth'];
     _popularity = json['popularity'];
-    _profilePath = 'https://image.tmdb.org/t/p/w500'+json['profile_path'];
+    _profilePath = 'https://image.tmdb.org/t/p/w500'+json['profile_path'].toString();
     _images =
     json['images'] != null ? new Images.fromJson(json['images']) : null;
   }
@@ -233,7 +233,7 @@ class Profiles {
     _aspectRatio = json['aspect_ratio'];
     _height = json['height'];
     _iso6391 = json['iso_639_1'];
-    _filePath = 'https://image.tmdb.org/t/p/w500'+json['file_path'];
+    _filePath = 'https://image.tmdb.org/t/p/w500'+json['file_path'].toString();
     _voteAverage = json['vote_average'];
     _voteCount = json['vote_count'];
     _width = json['width'];

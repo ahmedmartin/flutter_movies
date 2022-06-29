@@ -38,7 +38,7 @@ class Person_info extends StatelessWidget{
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Text(bloc.person_model.biography!, style: TextStyle(
-                        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14
+                        color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16
                     ),),
                   ),
                   //SizedBox(height: 20,),
@@ -48,7 +48,7 @@ class Person_info extends StatelessWidget{
             ),
           );
         }else
-          return Container();
+          return Center(child: Text('no internet connection'),);
       })
     );
   }

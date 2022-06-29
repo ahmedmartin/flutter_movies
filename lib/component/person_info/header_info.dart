@@ -21,7 +21,7 @@ class Header_info extends StatelessWidget{
             child: Container(
               height: 350,
               width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.only(top: 80,left: 10,right: 10,bottom: 10),
+              padding: EdgeInsets.only(top: 80,left: 20,right: 20,bottom: 10),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(50)
@@ -57,7 +57,7 @@ class _box_info extends StatelessWidget{
         ),textAlign: TextAlign.center,),
         SizedBox(height: 30,),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             info_row(Icons.transgender, model.gender ==1?'fmale':'male'),
             info_row(Icons.star_rate, model.popularity!.toInt().toString()),
@@ -66,7 +66,7 @@ class _box_info extends StatelessWidget{
         SizedBox(height: 15,),
         if(model.placeOfBirth != null)
           ListTile(
-            title: Text(model.placeOfBirth!, overflow: TextOverflow.ellipsis,
+            title: Text(model.placeOfBirth!, //overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20
               ),),
@@ -77,17 +77,12 @@ class _box_info extends StatelessWidget{
 
         SizedBox(height: 15,),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             info_row(Icons.cake, model.birthday!),
             info_row(Icons.account_tree_rounded, model.knownForDepartment!),
           ],
         ),
-
-        // SizedBox(height: 20,),
-        // Text(model.biography!,style: TextStyle(
-        //     color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16
-        // ),),
 
       ],
     );

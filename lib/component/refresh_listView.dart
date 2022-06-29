@@ -43,9 +43,12 @@ class _Refresh_ListView extends State<Refresh_ListView>{
         enablePullDown: false,
         enablePullUp: page_index<=500,
         onLoading:() async {
-          setState(()  {
-            bloc.get_popular_persons(++page_index);
-          });
+          try {
+            await bloc.get_popular_persons(++page_index);
+            setState((){});
+          }catch(e){
+            print(--page_index);
+          }
           _refreshController.loadComplete();
         },
 

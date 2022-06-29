@@ -23,18 +23,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       print(event.page);
       popular_persons_info = await Person_repo().get_popular_persons(event.page);
-      print(popular_persons_info.length);
       emit(FetchedPersonsState());
     } catch (e) {
-      print(e.toString());
       emit(FailedPersonsState(e.toString()));
     }
 
   }
   get_popular_persons(int page) async {
     print(page);
-    if(page<=500)   //number of pages only 500
-      popular_persons_info.addAll(await Person_repo().get_popular_persons(page));
+    if(page<=500) { //number of pages only 500
+        popular_persons_info.addAll(await Person_repo().get_popular_persons(page));
+    }
   }
 }
 

@@ -116,8 +116,13 @@ class Results {
     _knownForDepartment = json['known_for_department'];
     _name = json['name'];
     _popularity = json['popularity'];
-    //if(json['profile_path']!=null)
-    _profilePath = 'https://image.tmdb.org/t/p/w500'+json['profile_path'];
+
+    if(json['profile_path']==null) {
+      print(id);
+      print(name);
+    }
+
+    _profilePath = 'https://image.tmdb.org/t/p/w500'+json['profile_path'].toString();
   }
 
   Map<String, dynamic> toJson() {
